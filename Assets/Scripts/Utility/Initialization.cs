@@ -36,11 +36,11 @@ public static class Initialization
         SceneManager.LoadScene("UI", LoadSceneMode.Additive);
         await Await.NextUpdate();
         var t = SceneManager.GetSceneByName("UI").GetRootGameObjects();
-        var menus = SceneManager.GetSceneByName("UI").GetRootGameObjects()
-                                                     .Select(g => g.GetComponentInChildren<UIPlayerMenus>())
-                                                     .First(m => m != null);
-        player.Menu = menus;
-        menus.Player = player;
+        var playerUI = SceneManager.GetSceneByName("UI").GetRootGameObjects()
+                                                        .Select(g => g.GetComponentInChildren<PlayerUI>())
+                                                        .First(m => m != null);
+        player.Menu = playerUI.Menus;
+        playerUI.Player = player;
         player.Menu.Hide();
     }
 }

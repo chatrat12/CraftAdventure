@@ -6,6 +6,7 @@
     public UIPlayerMenus Menu { get; set; }
     public PlayerInteractDetection InteractDetection { get; private set; }
     public Inventory Inventory { get; private set; }
+    public PlayerAnimation Animation { get; private set; }
 
     public Player(PlayerAvatar avatar)
     {
@@ -14,6 +15,7 @@
         Input = new PlayerInput(this);
         Movement = new PlayerMovement(this);
         InteractDetection = new PlayerInteractDetection(this);
+        Animation = new PlayerAnimation(this);
     }
 
     public void Update()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityAsync;
+using UnityEngine;
 
 public class ResourceSource : InteractableObject
 {
@@ -6,10 +7,11 @@ public class ResourceSource : InteractableObject
     [SerializeField] Transform _model;
     [SerializeField] Transform _depletedOverride;
     [SerializeField] AudioClip _harvestSound;
+    [SerializeField] string _interactMessage = "Interact";
 
     private AudioSource _source;
 
-    public override string InteractMessage => base.InteractMessage;
+    public override string InteractMessage => _interactMessage;
     public bool Depleted { get; private set; }
 
     public override bool CanInteract(Player player) => !Depleted;
@@ -19,8 +21,11 @@ public class ResourceSource : InteractableObject
         CreateAudioSource();
     }
 
-    public override void Interact(Player player)
+    public override async void Interact(Player player)
     {
+        player.Animation.PickupAnimation();
+        await Await.Seconds(0.25f);
+
         player.Inventory.AddItem(_item);
 
         Depleted = true;

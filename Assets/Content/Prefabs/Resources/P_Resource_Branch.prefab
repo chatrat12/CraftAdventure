@@ -130,6 +130,7 @@ MonoBehaviour:
   _model: {fileID: 7864969779832787077}
   _depletedOverride: {fileID: 0}
   _harvestSound: {fileID: 8300000, guid: 6a6cdb956af3ad5439b5c077f33b75f8, type: 3}
+  _interactMessage: Pickup Branch
 --- !u!65 &8378798274269073501
 BoxCollider:
   m_ObjectHideFlags: 0

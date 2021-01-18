@@ -17,7 +17,7 @@ public class PlayerInteractDetection
     {
         var pos = Vector3.forward * 0.5f + Vector3.up * 0.25f;
         pos = _player.Avatar.transform.localToWorldMatrix.MultiplyPoint(pos);
-        var count = Physics.OverlapSphereNonAlloc(pos, 0.25f, _buffer);
+        var count = Physics.OverlapSphereNonAlloc(pos, 0.5f, _buffer);
 
         AvailableInteraction = _buffer.Where((o, i) => i < count)
                                        .Select(o => o.GetComponent<InteractableObject>())
@@ -29,6 +29,6 @@ public class PlayerInteractDetection
     {
         var pos = Vector3.forward * 0.5f + Vector3.up * 0.25f;
         pos = _player.Avatar.transform.localToWorldMatrix.MultiplyPoint(pos);
-        Gizmos.DrawWireSphere(pos, 0.25f);
+        Gizmos.DrawWireSphere(pos, 0.5f);
     }
 }
