@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory
+public partial class Inventory
 {
     public IEnumerable<ItemStack> Slots => _slots;
     public int SlotCount { get { return _slots.Length; } }

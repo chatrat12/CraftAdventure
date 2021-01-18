@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 5182e4b3a8f1d4144abb62497d1e7a0c
+guid: b4bfa71a9d3335c4fabbd43b9edb4ee3
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: A_Biped_Pickup
+    second: A_Biped_SwingAxe
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: A_Biped_Pickup
+      name: A_Biped_SwingAxe
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 135
+      lastFrame: 21
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

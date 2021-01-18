@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(menuName = "CA/Items/Item", fileName = "NewArmor", order = 105)]
+[CreateAssetMenu(menuName = "CA/Items/Item", fileName = "NewItem", order = 105)]
 public class Item : IndentifiableScriptableObject
 {
     public string Name => _name;

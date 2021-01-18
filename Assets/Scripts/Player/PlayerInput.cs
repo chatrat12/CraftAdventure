@@ -20,7 +20,7 @@ public class PlayerInput
             if (_player.InteractDetection.AvailableInteraction != null && Input.GetKeyDown(KeyCode.F))
                 _player.InteractDetection.AvailableInteraction.Interact(_player);
             if (Input.GetKeyDown(KeyCode.Space))
-                _player.Animation.PickupAnimation();
+                _player.Animation.ChopWood();
         }
         MovementVector = _disabled ? Vector2.zero : GetInputMovementVector();
 

@@ -7,6 +7,8 @@
     public PlayerInteractDetection InteractDetection { get; private set; }
     public Inventory Inventory { get; private set; }
     public PlayerAnimation Animation { get; private set; }
+    public CharacterAttachmentPoints Attachments { get; private set; }
+    public EquipmentModels EquipmentModels { get; private set; }
 
     public Player(PlayerAvatar avatar)
     {
@@ -16,6 +18,8 @@
         Movement = new PlayerMovement(this);
         InteractDetection = new PlayerInteractDetection(this);
         Animation = new PlayerAnimation(this);
+        Attachments = avatar.GetComponent<CharacterAttachmentPoints>();
+        EquipmentModels = avatar.GetComponent<EquipmentModels>();
     }
 
     public void Update()
