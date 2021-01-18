@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 490d0ff1aa5268a4b8070acbe2564c8d, type: 3}
-  m_Name: Item_Pickaxe_Iron
+  m_Name: Item_Pickaxe_Stone
   m_EditorClassIdentifier: 
-  _id: -1157423533
-  _name: Iron Pickaxe
-  _icon: {fileID: 21300000, guid: f91a9cb9790b4f647a3ba7008361a7ab, type: 3}
+  _id: 1837069046
+  _name: Stone Pickaxe
+  _icon: {fileID: 21300000, guid: 3401e48b59fecca4388e1e309104e5c8, type: 3}
   _description: 
   _cost: 0
   _maxStack: 1

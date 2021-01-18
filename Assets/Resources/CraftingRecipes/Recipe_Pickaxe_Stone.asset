@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da55c81ae65bf6243af1c5801887dbc6, type: 3}
+  m_Name: Recipe_Pickaxe_Stone
+  m_EditorClassIdentifier: 
+  _id: -905329886
+  _requirements:
+  - _item: {fileID: 11400000, guid: 0a48b69fdec745d4c8ed0bb3a7705d16, type: 2}
+    _count: 3
+  - _item: {fileID: 11400000, guid: a9fd65c9a19d85145a483c2fd43961c2, type: 2}
+    _count: 2
+  _result:
+    _item: {fileID: 11400000, guid: a0339d8a23682644d8594b0ef20d85a6, type: 2}
+    _count: 1

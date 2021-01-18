@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da55c81ae65bf6243af1c5801887dbc6, type: 3}
+  m_Name: Recipe_Fish
+  m_EditorClassIdentifier: 
+  _id: -161320816
+  _requirements:
+  - _item: {fileID: 11400000, guid: a49cd0c8a9e063d449ee74e5e6ebe327, type: 2}
+    _count: 1
+  _result:
+    _item: {fileID: 11400000, guid: 9923310caf485c94f86942861d1d850f, type: 2}
+    _count: 1

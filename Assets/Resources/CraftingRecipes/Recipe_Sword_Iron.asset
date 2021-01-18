@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da55c81ae65bf6243af1c5801887dbc6, type: 3}
-  m_Name: Recipe_IronAxe
+  m_Name: Recipe_Sword_Iron
   m_EditorClassIdentifier: 
-  _id: 795633597
+  _id: -1254064405
   _requirements:
   - _item: {fileID: 11400000, guid: cab5577833bc7b8449a2772c7a8937b0, type: 2}
-    _count: 3
+    _count: 2
   - _item: {fileID: 11400000, guid: a9fd65c9a19d85145a483c2fd43961c2, type: 2}
     _count: 2
   _result:
-    _item: {fileID: 11400000, guid: 1b2a931411d264445af5b7206d1894f6, type: 2}
+    _item: {fileID: 11400000, guid: 023baffd3954856408f272ce5998132d, type: 2}
     _count: 1
