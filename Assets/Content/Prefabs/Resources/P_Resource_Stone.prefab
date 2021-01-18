@@ -50,6 +50,7 @@ MonoBehaviour:
     _count: 1
   _model: {fileID: 5371504536426921398}
   _depletedOverride: {fileID: 0}
+  _harvestSound: {fileID: 8300000, guid: 25f4868a89806cd48b92b57d4b284aac, type: 3}
 --- !u!65 &9073192112661817988
 BoxCollider:
   m_ObjectHideFlags: 0

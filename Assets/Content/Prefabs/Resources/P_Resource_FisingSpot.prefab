@@ -63,6 +63,7 @@ MonoBehaviour:
     _count: 1
   _model: {fileID: 1450809814022634597}
   _depletedOverride: {fileID: 0}
+  _harvestSound: {fileID: 8300000, guid: 47ac4624b6981804e96fdececc78269f, type: 3}
 --- !u!1 &1450809814022634596
 GameObject:
   m_ObjectHideFlags: 0
