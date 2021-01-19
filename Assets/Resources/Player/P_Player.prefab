@@ -63,8 +63,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _leftHandTransform: {fileID: 8786579213556163956}
   _rightHandTransform: {fileID: 9144254853849655473}
-  _testObject: {fileID: 2076055419025118704, guid: 333671de2fccd6c4983afb4573b0788b,
-    type: 3}
 --- !u!114 &5559004125811175943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,6 +89,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f77bfbc73a41694daa66626e7c1c1d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4677805486952118475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625556846852091087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14c22c1e35ec4b248bc10e4dd7d441b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _autoFindRenderers: 1
+  _manualRenderers: []
 --- !u!1 &4441397371445927236
 GameObject:
   m_ObjectHideFlags: 0
