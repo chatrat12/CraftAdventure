@@ -1,15 +1,12 @@
 ﻿using UnityEngine;
 
-public class PlayerAvatar : MonoBehaviour
+public class PlayerAvatar : CharacterAvatar
 {
-    public Player Player { get; private set; }
+    //public Player Player { get; private set; }
 
-    private void Awake()
+    protected override void Awake()
     {
-        Player = new Player(this);
+        Character = new Player(this, _info);
     }
 
-    private void Update() => Player.Update();
-    private void OnAnimatorMove() => Player.OnAnimatorMove();
-    private void OnDrawGizmos() => Player.OnDrawGizmos();
 }

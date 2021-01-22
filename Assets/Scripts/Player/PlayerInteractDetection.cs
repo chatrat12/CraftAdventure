@@ -29,6 +29,6 @@ public class PlayerInteractDetection
     {
         var pos = Vector3.forward * 0.5f + Vector3.up * 0.25f;
         pos = _player.Avatar.transform.localToWorldMatrix.MultiplyPoint(pos);
-        Gizmos.DrawWireSphere(pos, 0.5f);
+        //Gizmos.DrawWireSphere(pos, 0.5f);
     }
 }

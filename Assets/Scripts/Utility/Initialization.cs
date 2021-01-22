@@ -20,7 +20,7 @@ public static class Initialization
         SceneManager.MoveGameObjectToScene(avatar.gameObject, playerScene);
         avatar.transform.position = position;
 
-        return avatar.Player;
+        return avatar.Character as Player;
     }
 
     private static void InitializeCameraRig(Player player)

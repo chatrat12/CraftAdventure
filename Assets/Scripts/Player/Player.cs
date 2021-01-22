@@ -1,18 +1,16 @@
-﻿public class Player
+﻿public class Player : Character
 {
-    public PlayerAvatar Avatar { get; private set; }
-    public PlayerInput Input { get; private set; }
-    public PlayerMovement Movement { get; private set; }
-    public UIPlayerMenus Menu { get; set; }
-    public PlayerInteractDetection InteractDetection { get; private set; }
-    public Inventory Inventory { get; private set; }
-    public PlayerAnimation Animation { get; private set; }
-    public CharacterAttachmentPoints Attachments { get; private set; }
-    public EquipmentModels EquipmentModels { get; private set; }
+    public PlayerInput               Input              { get; private set; }
+    public PlayerMovement            Movement           { get; private set; }
+    public UIPlayerMenus             Menu               { get; set; }
+    public PlayerInteractDetection   InteractDetection  { get; private set; }
+    public Inventory                 Inventory          { get; private set; }
+    public PlayerAnimation           Animation          { get; private set; }
+    public CharacterAttachmentPoints Attachments        { get; private set; }
+    public EquipmentModels           EquipmentModels    { get; private set; }
 
-    public Player(PlayerAvatar avatar)
+    public Player(PlayerAvatar avatar, CharacterInfo info) : base(avatar, info)
     {
-        Avatar = avatar;
         Inventory = new Inventory(32);
         Input = new PlayerInput(this);
         Movement = new PlayerMovement(this);
@@ -22,18 +20,18 @@
         EquipmentModels = avatar.GetComponent<EquipmentModels>();
     }
 
-    public void Update()
+    public override void Update()
     {
         Input.Update();
         Movement.Update();
         InteractDetection.Update();
     }
 
-    public void OnAnimatorMove()
+    public override void OnAnimatorMove()
     {
         Movement.OnAnimatorMove();
     }
-    public void OnDrawGizmos()
+    public override void OnDrawGizmos()
     {
         InteractDetection.OnDrawGizmos();
     }
