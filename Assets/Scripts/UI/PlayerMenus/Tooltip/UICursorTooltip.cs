@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UICursorTooltip : UITooltip
 {
@@ -12,7 +13,7 @@ public class UICursorTooltip : UITooltip
 
     private void LateUpdate()
     {
-        _rect.anchoredPosition = Input.mousePosition;
+        _rect.anchoredPosition = Mouse.current.position.ReadValue();
     }
 
 }

@@ -25,10 +25,12 @@ public static class Initialization
 
     private static void InitializeCameraRig(Player player)
     {
-        var cameraRig = GameObject.Instantiate(Resources.Load<CameraRig>("Player/P_CameraRig"));
+        var cameraRig = GameObject.Instantiate(Resources.Load<ThirdPersonCamera>("Player/P_CameraRig_ThirdPerson"));
         SceneManager.MoveGameObjectToScene(cameraRig.gameObject, player.Avatar.gameObject.scene);
         cameraRig.transform.localPosition = player.Avatar.transform.position;
-        cameraRig.Player = player;
+        cameraRig.Target = player.Avatar.transform;
+        cameraRig.Init();
+        player.CameraRig = cameraRig;
     }
 
     private async static void InitializeUI(Player player)

@@ -33,14 +33,14 @@ public class PlayerMovement
     public void OnAnimatorMove()
     {
         var speed = _animator.deltaPosition.magnitude;
-        var translationVector = new Vector3(_player.Input.MovementVector.x, 0, _player.Input.MovementVector.y);
-        if (translationVector.magnitude > 0.1f)
+        //var translationVector = new Vector3(_player.Input.MovementVector.x, 0, _player.Input.MovementVector.y);
+        if (_player.Input.MovementVector.magnitude > 0.1f)
         {
             //transform.position += translationVector * speed;
-            var newVel = translationVector * speed / Time.deltaTime;
+            var newVel = _player.Input.MovementVector * speed / Time.deltaTime;
             newVel.y = _rigidbody.velocity.y;
+            _rigidbody.rotation = Quaternion.LookRotation(_player.Input.MovementVector);
             _rigidbody.velocity = newVel;
-            _rigidbody.rotation = Quaternion.LookRotation(translationVector);
         }
         else
             _rigidbody.velocity = Vector3.zero;

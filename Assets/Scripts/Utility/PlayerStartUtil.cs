@@ -4,7 +4,7 @@ using UnityEditor;
 
 public static class PlayerStartUtil
 {
-    [MenuItem("OP/Align Player Start to View &s", false, 1)]
+    [MenuItem("CA/Align Player Start to View &s", false, 1)]
     private static void AlignPlayerStartToView()
     {
         var view = SceneView.currentDrawingSceneView;

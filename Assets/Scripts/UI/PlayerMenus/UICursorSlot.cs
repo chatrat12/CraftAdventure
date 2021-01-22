@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class UICursorSlot : UIView
 {
@@ -13,6 +14,6 @@ public class UICursorSlot : UIView
 
     private void LateUpdate()
     {
-        _rect.anchoredPosition = Input.mousePosition;
+        _rect.anchoredPosition = Mouse.current.position.ReadValue();
     }
 }

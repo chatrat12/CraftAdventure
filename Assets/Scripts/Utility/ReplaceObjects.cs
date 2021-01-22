@@ -9,7 +9,7 @@ public class ReplaceObjects : EditorWindow
     [SerializeField] private GameObject _newObject;
     [SerializeField] private bool _keepName = false;
 
-    [MenuItem("Cooties/Utils/Replace Objects")]
+    [MenuItem("CA/Utils/Replace Objects")]
     private static void OpenWindow()
     {
         GetWindow<ReplaceObjects>();
