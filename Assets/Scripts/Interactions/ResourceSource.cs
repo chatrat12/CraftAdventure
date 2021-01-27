@@ -26,7 +26,10 @@ public class ResourceSource : InteractableObject
     public override async void Interact(Player player)
     {
         if (_requiredTool == RequiredToolType.Axe)
-            player.Animation.ChopWood();
+        {
+            var axe = player.Inventory.Slots.First(s => s.Item is ItemTool tool && tool.Type == ItemTool.ToolType.Axe);
+            player.Animation.ChopWood(axe.Item as ItemEquipment);
+        }
         else
             player.Animation.PickupAnimation();
         Depleted = true;

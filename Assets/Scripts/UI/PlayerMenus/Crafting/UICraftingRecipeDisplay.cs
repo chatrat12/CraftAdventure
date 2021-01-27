@@ -1,8 +1,6 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 
-public class UICraftingRecipeDisplay : UIItemDisplayBase, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
+public class UICraftingRecipeDisplay : UIItemDisplayBase
 {
     public CraftingRecipe Recipe
     {
@@ -14,23 +12,14 @@ public class UICraftingRecipeDisplay : UIItemDisplayBase, IPointerClickHandler, 
         }
     }
 
-    public UnityEvent OnClick { get; } = new UnityEvent();
+    protected override Item _item => _recipe.Result.Item;
+    protected override int _count => _recipe.Result.Count;
 
     protected CraftingRecipe _recipe;
-    protected override ItemStack _displayItemStack => _recipe.Result;
 
-    public void OnPointerClick(PointerEventData eventData)
-        => OnClick.Invoke();
-
-    public void OnPointerEnter(PointerEventData eventData)
+    public override void OnPointerEnter(PointerEventData eventData)
     {
         GameCursor.Tooltip.Show();
         Recipe.BuildTooltip(GameCursor.Tooltip);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        GameCursor.Tooltip.Clear();
-        GameCursor.Tooltip.Hide();
     }
 }

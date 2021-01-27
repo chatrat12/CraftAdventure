@@ -17,12 +17,9 @@ public class ItemStack
         {
             if (value != _item)
             {
-                if (CanHoldItem(value))
-                {
-                    _item = value;
-                    if (ItemChanged != null)
-                        ItemChanged(this);
-                }
+                _item = value;
+                if (ItemChanged != null)
+                    ItemChanged(this);
             }
         }
     }
@@ -59,10 +56,7 @@ public class ItemStack
     }
 
     public ItemStack() { }
-    public ItemStack(Item item, int count = 1)
-    {
-        Set(item, count);
-    }
+    public ItemStack(Item item, int count = 1) => Set(item, count);
 
     public void Set(Item newItem, int newCount)
     {
@@ -81,26 +75,11 @@ public class ItemStack
         target.Item = Item;
         target.Count = Count;
     }
-    public void CopyFrom(ItemStack target)
-    {
-        target.CopyTo(this);
-    }
-    public void Swap(ItemStack target)
-    {
-        Swap(this, target);
-    }
-    public void Deposit(ItemStack depositTo, int count)
-    {
-        Deposit(this, depositTo, count);
-    }
-    public void DepositAll(ItemStack depositTo)
-    {
-        DepositAll(this, depositTo);
-    }
-    protected virtual bool CanHoldItem(Item item)
-    {
-        return true;
-    }
+    public void CopyFrom(ItemStack target) => target.CopyTo(this);
+    public void Swap(ItemStack target) => Swap(this, target);
+    public void Deposit(ItemStack depositTo, int count) => Deposit(this, depositTo, count);
+    public void DepositAll(ItemStack depositTo) => DepositAll(this, depositTo);
+    public void Clear() => Set(null, 0);
     public override bool Equals(object obj)
     {
         var other = obj as ItemStack;
@@ -131,17 +110,13 @@ public class ItemStack
 
     public static void Swap(ItemStack stackA, ItemStack stackB)
     {
-        // Check to see if slots can hold each others' contents
-        if (stackA.CanHoldItem(stackB.Item) && stackA.CanHoldItem(stackB.Item))
-        {
-            stackA.CopyTo(_tempItemStack);
-            stackB.CopyTo(stackA);
-            _tempItemStack.CopyTo(stackB);
-        }
+        stackA.CopyTo(_tempItemStack);
+        stackB.CopyTo(stackA);
+        _tempItemStack.CopyTo(stackB);
     }
     public static void Deposit(ItemStack from, ItemStack to, int count)
     {
-        if (to.CanHoldItem(from.Item) && CamDeposit(from, to))
+        if (CamDeposit(from, to))
         {
             // If 'to stack' is empty, set its item type
             if (to.Empty)

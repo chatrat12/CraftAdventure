@@ -16,12 +16,18 @@ public class PlayerAnimation
         _animator.SetTrigger("Pickup");
     }
 
-    public async void ChopWood()
+    public async void ChopWood(ItemEquipment axe)
     {
-        _player.EquipmentModels.WoodAxe.gameObject.SetActive(true);
-        _player.Attachments.RightHand.Equip(_player.EquipmentModels.WoodAxe);
+        _player.Equipment.AttachmentPoints.PrimaryWeapon.Sheathed = true;
+        var model = _player.Equipment.ModelCache.GetModel(axe);
+        _player.Equipment.AttachmentPoints.MainHandUtility.Attach(model.transform);
         _animator.SetTrigger("AxeSwing");
         await Await.Seconds(0.5f);
-        _player.Attachments.RightHand.Clear();
+        _player.Equipment.AttachmentPoints.MainHandUtility.Clear();
+    }
+
+    public void SwingSword()
+    {
+        _animator.SetTrigger("SwordSwing");
     }
 }

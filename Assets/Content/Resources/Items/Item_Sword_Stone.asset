@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 490d0ff1aa5268a4b8070acbe2564c8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ce54d5173922e14ca6c11c9beae6505, type: 3}
   m_Name: Item_Sword_Stone
   m_EditorClassIdentifier: 
   _id: -1874653972
@@ -18,3 +18,20 @@ MonoBehaviour:
   _description: 
   _cost: 0
   _maxStack: 1
+  _statModifier:
+    _attack: 4
+    _defense: 0
+    _magicAttack: 0
+    _magicDefense: 0
+    _speed: 0
+    _evade: 0
+    _luck: 0
+    _healthPool: 0
+    _accuracy: 0
+    _resistances:
+      _fire: 0
+      _earth: 0
+      _water: 0
+      _shock: 0
+  _model: {fileID: 4329599657621101097, guid: e460ef1ce54cef44da367bce0b033eab, type: 3}
+  _slotType: 0

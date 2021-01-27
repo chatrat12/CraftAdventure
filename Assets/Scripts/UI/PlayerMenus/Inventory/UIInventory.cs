@@ -1,9 +1,13 @@
 ﻿
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIInventory : UIView
 {
+    public class ItemEquipEvent : UnityEvent<UIItemSlot> { }
+    public ItemEquipEvent OnItemEquip { get; } = new ItemEquipEvent();
+
     public Inventory Inventory
     {
         get => _inventory;
@@ -17,6 +21,7 @@ public class UIInventory : UIView
             {
                 var slotUI = Instantiate(_slotPrefab, _slotParent);
                 slotUI.ItemStack = slot;
+                slotUI.ClickedRight.AddListener(() => OnItemEquip.Invoke(slotUI));
                 _slotEntries.Add(slotUI);
             }
         }

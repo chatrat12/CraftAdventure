@@ -1,9 +1,6 @@
-﻿
-using System;
-
-public class UIItemDisplay : UIItemDisplayBase
+﻿public class UIItemDisplay : UIItemDisplayBase
 {
-    public ItemStack ItemStack
+    public virtual ItemStack ItemStack
     {
         get => _itemStack;
         set
@@ -29,7 +26,8 @@ public class UIItemDisplay : UIItemDisplayBase
     }
 
     protected ItemStack _itemStack = null;
-    protected override ItemStack _displayItemStack => _itemStack;
+    protected override Item _item => _itemStack?.Item;
+    protected override int _count => (_itemStack != null && _itemStack.Item != null) ? _itemStack.Count : 0;
 
     protected void OnDestroy()
     {

@@ -105,8 +105,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f7bb838a26eb5d4e924daa74c8ad68a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftHandTransform: {fileID: 8786579213556163956}
-  _rightHandTransform: {fileID: 9144254853849655473}
+  _mainHandTransform: {fileID: 9144254853849655473}
+  _offHandTransform: {fileID: 8786579213556163956}
+  _mainHandSheathTransform: {fileID: 6214127076639263267}
+  _attachPointsSettings:
+  - _slotType: 0
+    _attachPoint: {fileID: 9144254853849655473}
+    _sheathable: 1
+    _sheathedAttachPoint: {fileID: 6214127076639263267}
+  - _slotType: 1
+    _attachPoint: {fileID: 8786579213556163956}
+    _sheathable: 0
+    _sheathedAttachPoint: {fileID: 0}
 --- !u!114 &4677805486952118475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _woodAxe: {fileID: 2076055419025118704, guid: 333671de2fccd6c4983afb4573b0788b,
     type: 3}
+  _sword: {fileID: 4648531093476187860, guid: e460ef1ce54cef44da367bce0b033eab, type: 3}
 --- !u!114 &6921500313096886586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +159,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _info: {fileID: 11400000, guid: f99e1f6576fad0e458192dd33066d834, type: 2}
+--- !u!114 &8034388596735740813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625556846852091087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af89a9c7cbecae41bf12cf2d00a1202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3344744894634757047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6214127076639263267}
+  m_Layer: 0
+  m_Name: MainHandSheath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6214127076639263267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344744894634757047}
+  m_LocalRotation: {x: 0.96774644, y: -0.05374727, z: 0.076810054, w: -0.23383404}
+  m_LocalPosition: {x: -0.191, y: 0.053, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5878500670476949217}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -26.380001, y: 168.813, z: 188.98698}
 --- !u!1 &4441397371445927236
 GameObject:
   m_ObjectHideFlags: 0
@@ -158,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8786579213556163956}
   m_Layer: 0
-  m_Name: AttachmentPoint_LeftHand
+  m_Name: AttachmentPoint_OffHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -188,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9144254853849655473}
   m_Layer: 0
-  m_Name: AttachmentPoint_RightHand
+  m_Name: AttachmentPoint_MainHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,6 +339,12 @@ GameObject:
 --- !u!4 &2145107579353888373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 962f8186c9cc68e42ac3a6fe6f38bd9a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1895534437234348446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5878500670476949217 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5465940246521907071, guid: 962f8186c9cc68e42ac3a6fe6f38bd9a,
     type: 3}
   m_PrefabInstance: {fileID: 1895534437234348446}
   m_PrefabAsset: {fileID: 0}

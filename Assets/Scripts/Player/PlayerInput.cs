@@ -23,8 +23,16 @@ public class PlayerInput
         {
             if (_player.InteractDetection.AvailableInteraction != null && Keyboard.current.fKey.wasPressedThisFrame)
                 _player.InteractDetection.AvailableInteraction.Interact(_player);
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-                _player.Animation.ChopWood();
+            if (Mouse.current.leftButton.wasPressedThisFrame)
+            {
+                if (_player.Equipment.Items.GetSlot(EquipmentSlotType.PrimaryWeapon).Item != null)
+                {
+                    if (_player.Equipment.AttachmentPoints.PrimaryWeapon.Sheathed)
+                        _player.Equipment.AttachmentPoints.PrimaryWeapon.Sheathed = false;
+                    else
+                        _player.Animation.SwingSword();
+                }
+            }
             HandleCamera();
         }
         MovementVector = _disabled ? Vector3.zero : GetMoveDirectionVector();
@@ -42,7 +50,7 @@ public class PlayerInput
 
     private void HandleCamera()
     {
-        _player.CameraRig.Rotate(Mouse.current.delta.ReadValue() * 0.01f);
+        _player.CameraRig.Rotate(Mouse.current.delta.ReadValue() * 0.02f);
     }
 
     private Vector2 GetInputMovementVector()
@@ -59,7 +67,6 @@ public class PlayerInput
         var input = GetInputMovementVector();
         var result = new Vector3(input.x, 0, input.y);
         result = Camera.main.transform.localToWorldMatrix.MultiplyVector(result);
-        //Debug.Log($"{GetInputMovementVector()} {Vector3.ProjectOnPlane(result, Vector3.up).normalized}");
         result = Vector3.ProjectOnPlane(result, Vector3.up).normalized;
         Debug.DrawLine(_player.Avatar.transform.position, _player.Avatar.transform.position + result, Color.cyan);
         return result;

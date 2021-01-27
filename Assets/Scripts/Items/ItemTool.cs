@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "CA/Items/Tool", fileName = "NewItemTool", order = 105)]
-public class ItemTool : Item
+public class ItemTool : ItemEquipment
 {
     public ToolType Type => _type;
 

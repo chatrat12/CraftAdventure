@@ -13,7 +13,7 @@ public class UICrafting : UIView
         {
             var button = Instantiate(_recipeButtonPrefab, _buttonParent);
             button.Recipe = recipe;
-            button.OnClick.AddListener(() =>
+            button.ClickedLeft.AddListener(() =>
             {
                 if(Inventory == null)
                 {
@@ -25,5 +25,4 @@ public class UICrafting : UIView
             });
         }
     }
-
 }

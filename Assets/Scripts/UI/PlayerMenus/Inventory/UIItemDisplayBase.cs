@@ -1,31 +1,20 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public abstract class UIItemDisplayBase : UIView
+public abstract class UIItemDisplayBase : UIView, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    protected abstract ItemStack _displayItemStack { get; }
+    public UnityEvent ClickedLeft { get; } = new UnityEvent();
+    public UnityEvent ClickedRight { get; } = new UnityEvent();
 
-    //public ItemStack ItemStack
-    //{
-    //    get => _itemStack;
-    //    set
-    //    {
-    //        _itemStack = value;
-    //        Invalidate();
-    //    }
-    //}
+    protected abstract Item _item { get; }
+    protected virtual int _count => 1;
 
-
-    //protected ItemStack _itemStack = null;
-
-
-    [SerializeField]
-    protected Image _itemImage;
-    [SerializeField]
-    protected TextMeshProUGUI _itemName;
-    [SerializeField]
-    protected TextMeshProUGUI _itemCount;
+    [SerializeField] protected Image _itemImage;
+    [SerializeField] protected TextMeshProUGUI _itemName;
+    [SerializeField] protected TextMeshProUGUI _itemCount;
 
     private void Awake()
     {
@@ -39,22 +28,50 @@ public abstract class UIItemDisplayBase : UIView
         UpdateCount();
     }
 
-    private void UpdateImage()
+    protected void UpdateImage()
     {
         if (_itemImage == null) return;
-        _itemImage.sprite = (_displayItemStack != null && _displayItemStack.Item != null) ? _displayItemStack.Item.Icon : null;
-        _itemImage.enabled = _itemImage.sprite != null;
+        _itemImage.overrideSprite = (_item != null) ? _item.Icon : null;
+        _itemImage.enabled = _itemImage.sprite != null || _itemImage.overrideSprite != null;
     }
 
-    private void UpdateName()
+    protected void UpdateName()
     {
         if (_itemName == null) return;
-        _itemName.text = (_displayItemStack != null && _displayItemStack.Item != null) ? _displayItemStack.Item.Name : string.Empty;
+        _itemName.text = (_item != null) ? _item.Name : string.Empty;
     }
 
-    private void UpdateCount()
+    protected void UpdateCount()
     {
         if (_itemCount == null) return;
-        _itemCount.text = (_displayItemStack != null && _displayItemStack.Item != null && _displayItemStack.Count > 1) ? _displayItemStack.Count.ToString() : string.Empty;
+        _itemCount.text = (_count > 1) ? _count.ToString() : string.Empty;
     }
+
+    public virtual void OnPointerEnter(PointerEventData eventData)
+    {
+        if (_item != null)
+        {
+            GameCursor.Tooltip.Show();
+            _item.BuildTooltip(GameCursor.Tooltip);
+        }
+        else
+            GameCursor.Tooltip.Hide();
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventData)
+    {
+        GameCursor.Tooltip.Clear();
+        GameCursor.Tooltip.Hide();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Left)
+            OnLeftClick();
+        else if (eventData.button == PointerEventData.InputButton.Right)
+            OnRightClick();
+    }
+
+    protected virtual void OnLeftClick() => ClickedLeft.Invoke();
+    protected virtual void OnRightClick() => ClickedRight.Invoke();
 }

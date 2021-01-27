@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [CreateAssetMenu(menuName = "CA/Items/Item", fileName = "NewItem", order = 105)]
 public class Item : IndentifiableScriptableObject
@@ -17,15 +18,16 @@ public class Item : IndentifiableScriptableObject
     [SerializeField] private int _cost;
     [SerializeField] private int _maxStack = 1;
 
-    //public virtual void BuildTooltip(UITooltip tooltip)
-    //{
-    //    tooltip.Clear();
-    //    tooltip.SetTitle(Name, UITooltipColors.ItemTitle);
-    //    BuildTooltipStats(tooltip);
-    //    tooltip.AddLine(Description, UITooltipColors.Gray);
-    //}
+    public virtual void BuildTooltip(UITooltip tooltip)
+    {
+        tooltip.Clear();
+        tooltip.AddLine(Name);
+        BuildTooltipStats(tooltip);
+        if(!string.IsNullOrEmpty(Description))
+            tooltip.AddLine(Description);
+    }
 
-    //protected virtual void BuildTooltipStats(UITooltip tooltip) { }
+    protected virtual void BuildTooltipStats(UITooltip tooltip) { }
 
     public override bool Equals(object obj)
     {

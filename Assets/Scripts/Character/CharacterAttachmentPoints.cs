@@ -1,51 +1,48 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class CharacterAttachmentPoints : MonoBehaviour
 {
-    public AttachPoint LeftHand => _leftHand;
-    public AttachPoint RightHand => _rightHand;
+    public AttachmentPointEquipmentSheathable PrimaryWeapon { get; private set; }
+    public BasicAttachmentPoint MainHandUtility { get; private set; }
 
-    [SerializeField] private Transform _leftHandTransform;
-    [SerializeField] private Transform _rightHandTransform;
+    [SerializeField] private EquipmentAttachPointSettings[] _attachPointsSettings;
 
-    private AttachPoint _leftHand;
-    private AttachPoint _rightHand;
+    private Dictionary<EquipmentSlotType, AttachmentPointEquipment> _equipment = new Dictionary<EquipmentSlotType, AttachmentPointEquipment>();
+    private EquipmentModelCache _modelCache;
 
-    private void Awake()
+    public void Init(CharacterEquipment equipment, EquipmentModelCache modelCache)
     {
-        _leftHand = new AttachPoint(_leftHandTransform);
-        _rightHand = new AttachPoint(_rightHandTransform);
+        _modelCache = modelCache;
+        foreach(var attachSettings in _attachPointsSettings)
+        {
+            var slot = equipment.GetSlot(attachSettings.StotType);
+            _equipment.Add(attachSettings.StotType, CreateAttachPointFromSettings(attachSettings, slot));
+        }
+        PrimaryWeapon = _equipment[EquipmentSlotType.PrimaryWeapon] as AttachmentPointEquipmentSheathable;
+        MainHandUtility = CreateUtilTransform(PrimaryWeapon.UnsheathedTransform, "MainHandUtil");
     }
 
-    public class AttachPoint
+    private AttachmentPointEquipment CreateAttachPointFromSettings(EquipmentAttachPointSettings settings, EquipmentSlot slot)
     {
-        public Transform Transform { get; private set; }
-        public Item Item { get; private set; }
+        if(settings.Sheathable)
+            return new AttachmentPointEquipmentSheathable(settings.StotType.ToString(), slot, _modelCache, settings.SheathedAttachPoint, settings.AttachPoint);
+        return new AttachmentPointEquipment(settings.AttachPoint, slot, _modelCache);
+    }
 
-        public AttachPoint(Transform transform)
-        {
-            Transform = transform;
-        }
+    private BasicAttachmentPoint CreateUtilTransform(Transform mainHand, string name)
+    {
+        var utilTransform = new GameObject(name).transform;
+        utilTransform.SetParent(mainHand.parent);
+        utilTransform.localPosition = mainHand.localPosition;
+        utilTransform.rotation = mainHand.rotation;
+        return new BasicAttachmentPoint(utilTransform);
+    }
 
-        public void Clear(bool destroy = false)
-        {
-            Item = null;
-            foreach (Transform child in Transform)
-            {
-                if (destroy)
-                    Destroy(child.gameObject);
-                else
-                {
-                    child.SetParent(null);
-                    child.gameObject.SetActive(false);
-                }
-            }
-        }
-        public void Equip(Transform transform)
-        {
-            transform.SetParent(Transform);
-            transform.localPosition = Vector3.zero;
-            transform.localRotation = Quaternion.identity;
-        }
+    public AttachmentPointEquipment GetEquipmentPoint(EquipmentSlotType slotType)
+    {
+        if (_equipment.ContainsKey(slotType))
+            return _equipment[slotType];
+        return null;
     }
 }

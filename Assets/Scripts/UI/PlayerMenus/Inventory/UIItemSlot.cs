@@ -1,23 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-public class UIItemSlot : Button
+﻿public class UIItemSlot : UIItemDisplay
 {
-    public ItemStack ItemStack
+    protected override void OnLeftClick()
     {
-        get => _display.ItemStack;
-        set => _display.ItemStack = value;
+        base.OnLeftClick();
+        GameCursor.ItemStack.Swap(ItemStack);
     }
-
-    [SerializeField] UIItemDisplay _display;
-
-    protected override void Awake()
-    {
-        onClick.AddListener(() =>
-        {
-            GameCursor.ItemStack.Swap(ItemStack);
-        });
-    }
-    public void Invalidate(bool immediate = false)
-        => _display.Invalidate(immediate);
 }

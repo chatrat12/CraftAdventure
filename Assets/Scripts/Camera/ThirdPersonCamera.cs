@@ -102,6 +102,8 @@ public class ThirdPersonCamera : MonoBehaviour
             _tiltAngle += _rotationAxis.y * _turnSpeed * Time.fixedDeltaTime * (_invertYAxis ? -1 : 1);
 
             _lastInputTime = Time.time;
+
+            _rotationAxis = Vector2.zero;
         }
         else if (ShouldAutoOrient())
             AutoOrient();
