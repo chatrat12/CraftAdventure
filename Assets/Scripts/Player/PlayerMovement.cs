@@ -43,6 +43,11 @@ public class PlayerMovement
             _rigidbody.velocity = newVel;
         }
         else
-            _rigidbody.velocity = Vector3.zero;
+        {
+            var vel = _rigidbody.velocity;
+            vel.x = 0;
+            vel.z = 0;
+            _rigidbody.velocity = vel;
+        }
     }
 }
